@@ -1,0 +1,15 @@
+{
+  "BarkNotify": {
+    "name": "Bark消息推送",
+    "description": "多用户 Bark 消息推送，支持类型过滤、生效时段与强提醒。",
+    "labels": "消息通知",
+    "version": "1.3.3",
+    "icon": "https://raw.githubusercontent.com/chens-hi/MoviePilot-Plugins/main/icons/barknotify.png",
+    "author": "chens-hi",
+    "level": 1,
+    "history": {
+      "v1.3.3": "多用户 Bark 消息推送，支持类型过滤、生效时段与强提醒。"
+    },
+    "system_version": ">=3.0.0"
+  }
+}
