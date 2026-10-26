@@ -410,6 +410,17 @@ def test_form_hidden_slots_hide_wrapper_rows():
     assert "{{u10_enabled && user_count >= 10}}" in shows
 
 
+def test_form_tip_alert_is_structured():
+    form, _ = BarkNotify().get_form()
+    alert = form[0]["content"][-1]["content"][0]["content"][0]
+    assert alert["component"] == "VAlert"
+    # 单段 text 会被折成一坨连续文字，必须用 title + 分条 content
+    assert alert["props"]["title"] == "配置说明"
+    rows = alert["content"][0]["content"]
+    assert [row["content"][0]["text"] for row in rows] == [
+        "通知类型", "生效时段", "强提醒"]
+
+
 def test_page_renders_with_and_without_users(plugin):
     assert plugin.get_page()
     empty = BarkNotify()

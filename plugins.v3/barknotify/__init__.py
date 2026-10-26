@@ -96,7 +96,7 @@ class BarkNotify(_PluginBase):
     # 插件图标
     plugin_icon = "https://raw.githubusercontent.com/chens-hi/MoviePilot-Plugins/main/icons/barknotify.png"
     # 插件版本：必须与 package.v3.json 中该插件的 version 保持一致
-    plugin_version = "1.3.4"
+    plugin_version = "1.3.6"
     # 插件作者
     plugin_author = "chens-hi"
     # 作者主页
@@ -349,6 +349,24 @@ class BarkNotify(_PluginBase):
                 {"component": "VDivider", "props": {"class": "my-2", "show": switch_show}},
             ])
 
+        def tip(label: str, desc: str) -> dict:
+            # 标签定宽，保证多条说明左侧对齐
+            return {
+                "component": "div",
+                "props": {"class": "d-flex"},
+                "content": [
+                    {
+                        "component": "span",
+                        "props": {
+                            "class": "font-weight-bold flex-shrink-0",
+                            "style": "width: 5em",
+                        },
+                        "text": label,
+                    },
+                    {"component": "span", "text": desc},
+                ],
+            }
+
         return [
             {
                 "component": "VForm",
@@ -441,14 +459,26 @@ class BarkNotify(_PluginBase):
                                         "props": {
                                             "type": "info",
                                             "variant": "tonal",
-                                            "text": (
-                                                "通知类型留空接收全部类型；生效开始或结束留空（选全天）"
-                                                "表示不限时段，支持跨天（如 22:00 开始、07:00 结束）。"
-                                                "生效时间段外的消息以静默（passive）方式推送；"
-                                                "强提醒使用 critical 级别（静音也响铃），需在 Bark App 内"
-                                                "授权「重要警告」。"
-                                            ),
+                                            "density": "comfortable",
+                                            "title": "配置说明",
+                                            "class": "text-body-2",
                                         },
+                                        "content": [
+                                            {
+                                                "component": "div",
+                                                "props": {"class": "d-flex flex-column ga-1"},
+                                                "content": [
+                                                    tip("通知类型", "留空则接收全部通知类型"),
+                                                    tip("生效时段",
+                                                        "开始/结束选「全天」即不限时段，"
+                                                        "可跨天（如 22:00 → 07:00）；"
+                                                        "时段外消息按静默（passive）推送"),
+                                                    tip("强提醒",
+                                                        "使用 critical 级别（静音也响铃），"
+                                                        "需在 Bark App 内授权「重要警告」"),
+                                                ],
+                                            }
+                                        ],
                                     }
                                 ],
                             },

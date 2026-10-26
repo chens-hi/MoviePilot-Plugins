@@ -3,11 +3,12 @@
     "name": "Bark消息推送",
     "description": "多用户 Bark 消息推送，支持类型过滤、生效时段与强提醒。",
     "labels": "消息通知",
-    "version": "1.3.4",
+    "version": "1.3.6",
     "icon": "https://raw.githubusercontent.com/chens-hi/MoviePilot-Plugins/main/icons/barknotify.png",
     "author": "chens-hi",
     "level": 1,
     "history": {
+      "v1.3.6": "配置页底部提示改为标题+分条说明（生效时段与时段外合并为一条），更易阅读。",
       "v1.3.4": "修复隐藏用户槽位仍占用空白高度、配置页出现大块留白的问题。",
       "v1.3.3": "多用户 Bark 消息推送，支持类型过滤、生效时段与强提醒。"
     },

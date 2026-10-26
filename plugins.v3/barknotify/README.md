@@ -2,7 +2,7 @@
 
 使用 [Bark](https://bark.day.app)（iOS 推送 App）转发 MoviePilot 的各类通知：资源下载、整理入库、订阅、站点、媒体服务器等。
 
-当前版本：**v1.3.4**（更新记录见插件仓库根 `package.v3.json` 的 `history`）
+当前版本：**v1.3.6**（更新记录见插件仓库根 `package.v3.json` 的 `history`）
 
 ## 功能
 
