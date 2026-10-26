@@ -397,6 +397,19 @@ def test_form_show_conditional_on_slot_enabled_and_count():
     assert "{{user_count >= 10}}" in content
 
 
+def test_form_hidden_slots_hide_wrapper_rows():
+    form, _ = BarkNotify().get_form()
+    slot_rows = [
+        node for node in form[0]["content"]
+        if node.get("component") == "VRow" and "show" in (node.get("props") or {})
+    ]
+    # 每个槽位两行都必须整体受控，否则隐藏后 VCol 的 padding 仍会留下空白
+    assert len(slot_rows) == MAX_SLOTS * 2
+    shows = [node["props"]["show"] for node in slot_rows]
+    assert "{{user_count >= 10}}" in shows
+    assert "{{u10_enabled && user_count >= 10}}" in shows
+
+
 def test_page_renders_with_and_without_users(plugin):
     assert plugin.get_page()
     empty = BarkNotify()

@@ -96,7 +96,7 @@ class BarkNotify(_PluginBase):
     # 插件图标
     plugin_icon = "https://raw.githubusercontent.com/chens-hi/MoviePilot-Plugins/main/icons/barknotify.png"
     # 插件版本：必须与 package.v3.json 中该插件的 version 保持一致
-    plugin_version = "1.3.3"
+    plugin_version = "1.3.4"
     # 插件作者
     plugin_author = "chens-hi"
     # 作者主页
@@ -231,6 +231,7 @@ class BarkNotify(_PluginBase):
             slots.extend([
                 {
                     "component": "VRow",
+                    "props": {"show": switch_show},
                     "content": [
                         {
                             "component": "VCol",
@@ -280,6 +281,7 @@ class BarkNotify(_PluginBase):
                 },
                 {
                     "component": "VRow",
+                    "props": {"show": show},
                     "content": [
                         {
                             "component": "VCol",
